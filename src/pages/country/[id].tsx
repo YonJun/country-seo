@@ -38,6 +38,7 @@ function CountryId(props: { notFound: boolean; country: Country }) {
         title={country.name.common}
         embed={{ hexColor: "#EFE7DD", image: country.flags.png }}
         description={country.name.official}
+        additionalKeywords={[country.name.common, country.name.official]}
       />
       <Button variant="contained" onClick={() => router.back()}>
         Back

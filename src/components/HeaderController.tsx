@@ -38,12 +38,12 @@ export const HeaderController: NextPage<HeaderControllerProps> = ({
         <>
           <meta name="og:title" content={title || "CountryFish"} />
           <meta name="og:type" content={"website"} />
-
+          <meta property="og:url" content={baseUrl} />
           <meta name="og:description" content={description} />
           <meta name="og:site_name" content="CountryFish" />
           <meta
             name="og:image"
-            content={embed.image ? embed.image : `${baseUrl}/img/fish.png`}
+            content={embed.image ? embed.image : `${baseUrl}/img/fish.jpg`}
           />
         </>
       ) : (
