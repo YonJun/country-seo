@@ -11,7 +11,7 @@ import Typography from "@mui/material/Typography";
 
 function CountryId(props: { notFound: boolean; country: Country }) {
   const router = useRouter();
-  const { id: idCountryFromParam } = router.query as any;
+  const { id: idCountryFromParam, large: isLarge } = router.query as any;
   const { country, notFound } = props;
   if (notFound) {
     return (
@@ -31,12 +31,15 @@ function CountryId(props: { notFound: boolean; country: Country }) {
       </PageContainer>
     );
   }
-
+  const image =
+    isLarge == "1"
+      ? `https://via.placeholder.com/1200x630?text=${idCountryFromParam}`
+      : country.flags.png;
   return (
     <PageContainer>
       <HeaderController
         title={country.name.common}
-        embed={{ hexColor: "#EFE7DD", image: country.flags.png }}
+        embed={{ hexColor: "#EFE7DD", image }}
         description={country.name.official}
         additionalKeywords={[country.name.common, country.name.official]}
       />
@@ -47,7 +50,7 @@ function CountryId(props: { notFound: boolean; country: Country }) {
         <Grid container>
           <Grid item xs={12} md={6}>
             <img
-              src={country.flags.svg}
+              src={image}
               alt={country.name.official}
               width="100%"
               height="auto"
