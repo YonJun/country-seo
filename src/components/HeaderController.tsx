@@ -43,15 +43,9 @@ export const HeaderController: NextPage<HeaderControllerProps> = ({
           <meta name="og:description" content={description} />
           <meta name="twitter:title" content={title || "CountryFish"} />
           <meta name="twitter:description" content={description} />
-          {embed.image ? (
-            <>
-              <meta name="twitter:card" content="summary_large_image" />
-              <meta property="og:image:width" content="1200" />
-              <meta property="og:image:height" content="630" />
-            </>
-          ) : (
-            ""
-          )}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
           <meta
             name="twitter:image"
             content={embed.image ? embed.image : `${baseUrl}/img/fish.jpg`}

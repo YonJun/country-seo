@@ -31,10 +31,7 @@ function CountryId(props: { notFound: boolean; country: Country }) {
       </PageContainer>
     );
   }
-  const image =
-    isLarge == "1"
-      ? `https://via.placeholder.com/1200x630?text=${idCountryFromParam}`
-      : country.flags.png;
+
   return (
     <PageContainer>
       <HeaderController
@@ -82,10 +79,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const id = params?.id;
+  const isLarge = params?.large;
   const encodeId = encodeURI(id as string);
 
   const res = await fetch(`https://restcountries.com/v3.1/name/${encodeId}`);
-  const country = await res.json();
+  const country = (await res.json()) as Country[];
 
   if (!country[0]) {
     return {
@@ -94,6 +92,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       },
     };
   }
+
+  const image = `https://via.placeholder.com/1200x630?text=${country[0].name.common}`;
+  // isLarge == "1"
+  //   ? `https://via.placeholder.com/1200x630?text=${country[0].name.common}`
+  //   : country[0].flags.png;
+  country[0].flags.png = image;
 
   return {
     props: {
