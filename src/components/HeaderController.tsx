@@ -36,10 +36,20 @@ export const HeaderController: NextPage<HeaderControllerProps> = ({
       <meta name="theme-color" content={embed?.hexColor || "#EFE7DD"} />
       {embed ? (
         <>
-          <meta name="og:title" content={title || "CountryFish"} />
-          <meta name="og:type" content={"website"} />
-          <meta name="og:description" content={description} />
           <meta name="og:site_name" content="CountryFish" />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="og:type" content={"website"} />
+          <meta name="og:title" content={title || "CountryFish"} />
+          <meta name="og:description" content={description} />
+          <meta name="twitter:title" content={title || "CountryFish"} />
+          <meta name="twitter:description" content={description} />
+          <meta
+            name="twitter:image"
+            content={embed.image ? embed.image : `${baseUrl}/img/fish.jpg`}
+          />
+
           <meta
             name="og:image"
             content={embed.image ? embed.image : `${baseUrl}/img/fish.jpg`}
